@@ -20,13 +20,12 @@ class Response:
 		self.code = code
 		self.code_text = self.CODES[code]
 
+	# The HEAD method doesn't have a body
 	def has_body(self):
-		if not self.request:
-			return False
 		return self.request["method"] != "HEAD"
 
 	def __str__(self):
-		s = "HTTP/1.1 {0} {1}\r\n".format(self.code, self.code_text)
+		s = "{0} {1} {2}\r\n".format(self.request["version"], self.code, self.code_text)
 		s += self.headers.to_headers()
 		if self.has_body():
 			s += self.body
