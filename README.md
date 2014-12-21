@@ -8,13 +8,16 @@ This is a really, really basic HTTP server implemented in Python that can serve 
 ## How To Install
 1. Clone the repo:
 
-  `$ git clone git@github.com:irubnich/python-serv.git`
-  
-  `$ cd python-serv`
+	```sh
+    $ git clone git@github.com:irubnich/python-serv.git
+    $ cd python-serv
+	```
 
 2. Run the server:
 
-  `$ ./server.py`
+	```sh
+ 	$ ./server.py
+    ```
 
 3. Go to `http://localhost:8080` and enjoy.
 
@@ -25,3 +28,8 @@ This is a really, really basic HTTP server implemented in Python that can serve 
 
 ## On Heroku
 I deployed this to http://stormy-island-9205.herokuapp.com/ and it serves files remotely as well as it does locally.
+
+## Credits
+Based on a Ruby tutorial I stumbled upon a while ago: https://practicingruby.com/articles/implementing-an-http-file-server
+
+I took the basic concepts from there and applied them to Python and its TCPServer implementation, while creating some new classes like `Headers` and `Request`.
