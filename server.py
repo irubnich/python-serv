@@ -4,6 +4,7 @@
 Entry point for the server
 '''
 
+from os import environ
 import SocketServer
 from handler import HTTPHandler
 from headers import Headers
@@ -18,5 +19,11 @@ class Server:
 		server.web_root = self.web_root
 		server.serve_forever()
 
-server = Server('./public', 8080) # Change this as necessary
+# Detect Heroku
+try:
+	port = int(environ['PORT'])
+except KeyError as e:
+	port = 8080 # Change this as necessary
+
+server = Server('./public', port)
 server.run()
