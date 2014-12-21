@@ -7,10 +7,14 @@ This is a really, really basic HTTP server implemented in Python that can serve 
 
 ## How To Install
 1. Clone the repo:
-        $ git clone git@github.com:irubnich/python-serv.git
-        $ cd python-serv
+
+  `$ git clone git@github.com:irubnich/python-serv.git`
+  `$ cd python-serv`
+
 2. Run the server:
-        $ ./server.py
+
+  `$ ./server.py`
+
 3. Go to `http://localhost:8080` and enjoy.
 
 ## Stuff to Load
