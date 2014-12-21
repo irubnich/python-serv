@@ -27,7 +27,7 @@ This is a really, really basic HTTP server implemented in Python that can serve 
 - `other_file.ext` - regular file that triggers a browser download
 
 ## On Heroku
-I deployed this to http://stormy-island-9205.herokuapp.com/ and it serves files remotely as well as it does locally.
+I deployed this to http://stormy-island-9205.herokuapp.com/ and it serves files remotely as well as it does locally. Give it a few seconds for the dyno to wake up the first time you load the page. This is normal behavior if you have less than 2 dynos.
 
 ## Credits
 Based on a Ruby tutorial I stumbled upon a while ago: https://practicingruby.com/articles/implementing-an-http-file-server
