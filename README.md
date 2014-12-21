@@ -9,6 +9,7 @@ This is a really, really basic HTTP server implemented in Python that can serve 
 1. Clone the repo:
 
   `$ git clone git@github.com:irubnich/python-serv.git`
+  
   `$ cd python-serv`
 
 2. Run the server:
