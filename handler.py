@@ -7,22 +7,26 @@ from request import Request
 from response import Response
 
 class HTTPHandler(SocketServer.BaseRequestHandler):
-	CONTENT_TYPE_MAPPING = {
+	CONTENT_TYPES = {
 		'html': 'text/html',
 		'txt': 'text/plain',
 		'png': 'image/png',
-		'jpg': 'image/jpeg'
+		'jpg': 'image/jpeg',
+		'jpeg': 'image/jpeg',
+		'pdf': 'application/pdf'
 	}
-	DEFAULT_CONTENT_TYPE = 'application/octet-stream'
 
+	# Used to serve the appropriate MIME type in the headers
 	def content_type(self, path):
 		fileName, fileExtension = splitext(path)
 		ext = fileExtension.split(".")[-1]
-		if self.CONTENT_TYPE_MAPPING.has_key(ext):
-			return self.CONTENT_TYPE_MAPPING[ext]
+		if self.CONTENT_TYPES.has_key(ext):
+			return self.CONTENT_TYPES[ext]
 		else:
-			return self.DEFAULT_CONTENT_TYPE
+			return 'application/octet-stream'
 
+	# Gets the filename from the requested path
+	# Also takes care of a security issue with ".." in paths
 	def requested_file(self, request_path):
 		path = urlparse(request_path).path
 
@@ -39,6 +43,7 @@ class HTTPHandler(SocketServer.BaseRequestHandler):
 		# Assuming / is the filesystem separator, should work on OS X and Linux
 		return "{0}/{1}".format(self.server.web_root, "".join(clean))
 
+	# This is run on every single request within the event loop in server.py
 	def handle(self):
 		self.raw_request = self.request.recv(2048).strip()
 		self.request_lines = self.raw_request.split('\r\n')
